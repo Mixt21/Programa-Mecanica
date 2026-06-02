@@ -43,7 +43,6 @@ def configurar_sistema():
                 pos_x = float(input(f"  -> Posición X (metros): "))
                 pos_y = float(input(f"  -> Posición Y (metros): ")) if dimension == "2D" else 0.0
                 
-                # Validación inmediata de posición ocupada
                 posicion_repetida = False
                 for c in cargas:
                     if c['x'] == pos_x and c['y'] == pos_y:
@@ -257,7 +256,6 @@ def generar_grafica_imagen():
             plt.quiver(ind['desde_x'], ind['desde_y'], ind['fx'], ind['fy'], color='#95a5a6',
                        angles='xy', scale_units='xy', scale=None, width=0.003, linestyle='--', alpha=0.7, zorder=4)
         
-        # Vector resultante (Verde Llamativo)
         plt.quiver(fn['x_origen'], fn['y_origen'], fn['fx'], fn['fy'], color='#27ae60',
                    angles='xy', scale_units='xy', scale=None, width=0.007, zorder=6)
         texto_datos += f"• F. Neta en q{fn['carga_num']}: {fn['magnitud']:.2e} N\n"
@@ -283,7 +281,6 @@ def generar_grafica_imagen():
     plt.grid(True, linestyle=':', alpha=0.5, color='#bdc3c7')
     plt.axis('equal')
     
-    # Leyenda Moderna
     from matplotlib.lines import Line2D
     leyendas_elementos = [
         Line2D([0], [0], marker='o', color='w', markerfacecolor='#e74c3c', markersize=11, label='Carga Positiva (+)'),
